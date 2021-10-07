@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
         if (!Auth::attempt($this->credentials($request))) {
             return response()->json([
-                "message" => 'Invalid username or password'
+                "error" => 'Invalid username or password'
             ], 401);
         }
 

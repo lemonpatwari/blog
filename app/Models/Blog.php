@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\BlogsBuilder;
 use App\Enums\BlogStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -38,5 +39,10 @@ class Blog extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    public function newEloquentBuilder($query): BlogsBuilder
+    {
+        return new BlogsBuilder($query);
     }
 }
